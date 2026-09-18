@@ -5,7 +5,7 @@
 - **Type**: Homey SDK 3 app for Zigbee devices
 - **Language**: TypeScript (compiles to JavaScript)
 - **Target**: Homey Pro (local platform only)
-- **Current Device**: ZG-303Z soil moisture sensor (Tuya OEM, manufacturer `_TZE200_wqashyqo`)
+- **Current Devices**: ZG-303Z soil moisture sensor (Tuya OEM, manufacturer `_TZE200_wqashyqo`); ZG-204ZX 24GHz mmWave presence + T&H sensor (Tuya OEM, manufacturer `_TZE200_w0ap83qu`)
 
 ## Development Commands
 
@@ -33,10 +33,18 @@ drivers/zg-303z/
 ├── driver.ts          # Driver initialization
 └── driver.compose.json # Device metadata, capabilities, settings
 
+drivers/zg-204zx/
+├── device.ts          # Main device logic, lifecycle handlers
+├── driver.ts          # Driver initialization
+└── driver.compose.json # Device metadata, capabilities, settings
+
 lib/
 ├── TuyaCluster.ts     # Tuya cluster (0xEF00) implementation
 ├── tuyaFrame.ts       # Tuya protocol frame encoding/decoding
-└── zg303z.ts          # Device-specific value conversions
+├── zg303z.ts          # ZG-303Z value conversions
+├── zg303zDatapoints.ts # ZG-303Z DP handler/write tables
+├── zg204zx.ts         # ZG-204ZX value conversions
+└── zg204zxDatapoints.ts # ZG-204ZX DP handler/write tables
 
 types/
 ├── homey-zigbeedriver.d.ts  # Type declarations for homey-zigbeedriver
@@ -176,6 +184,28 @@ Tuya devices use a proprietary protocol on cluster 0xEF00 (61184).
 | 110 | Soil Warning Threshold | VALUE | 0-100% |
 | 111 | Temp Sampling Interval | VALUE | 5-3600 seconds |
 | 112 | Soil Sampling Interval | VALUE | 5-3600 seconds |
+
+## Reference: ZG-204ZX Datapoints
+
+Source: HOBEIAN ZG-204ZX definition in [zigbee-herdsman-converters](https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/src/devices/tuya.ts) (fingerprint `TS0601` / `_TZE200_w0ap83qu`).
+
+| DP | Name | Type | Description |
+|----|------|------|-------------|
+| 1 | Presence | BOOL | 0=inactive, 1=active |
+| 2 | Static Detection Sensitivity | VALUE | 0-10 |
+| 4 | Detection Distance | VALUE | Raw / 100 = meters (0-5.00m) |
+| 101 | Humidity | VALUE | 0-100% |
+| 102 | Fading Time | VALUE | 0-28800 seconds |
+| 103 | Anti Interference | BOOL | 0=off, 1=on |
+| 104 | Humidity Calibration | VALUE | -30 to +30 |
+| 105 | Temp Calibration | VALUE | -20 to +20 (tenths of °C) |
+| 106 | Illuminance | VALUE | lux |
+| 107 | Illuminance Interval | VALUE | 1-720 minutes |
+| 108 | LED Indicator | BOOL | 0=off, 1=on |
+| 109 | Temp Unit | ENUM | 0=Celsius, 1=Fahrenheit |
+| 110 | Battery | VALUE | 0-100% |
+| 111 | Temperature | VALUE | Raw / 10 = °C |
+| 123 | Motion Detection Sensitivity | VALUE | 0-10 |
 
 ## Code Quality & Style
 

@@ -56,6 +56,69 @@
           "hint": "Moisture percentage below which water alarm triggers (0-100%)"
         }
       }
+    },
+    "zg-204zx": {
+      "name": "ZG-204ZX 24GHz Presence Sensor",
+      "capabilities": {
+        "alarm_motion": {
+          "name": "Presence",
+          "title": "Presence"
+        },
+        "measure_luminance": {
+          "name": "Illuminance",
+          "title": "Illuminance"
+        },
+        "measure_temperature": {
+          "name": "Temperature",
+          "title": "Temperature"
+        },
+        "measure_humidity": {
+          "name": "Humidity",
+          "title": "Humidity"
+        },
+        "measure_battery": {
+          "name": "Battery",
+          "title": "Battery"
+        }
+      },
+      "settings": {
+        "fading_time": {
+          "label": "Fading Time",
+          "hint": "Presence keep time after last detection (0-28800 seconds). Takes effect on next report."
+        },
+        "illuminance_interval": {
+          "label": "Illuminance Interval",
+          "hint": "Light sensing sampling interval, only refreshed while the radar is active (1-720 minutes)."
+        },
+        "detection_distance": {
+          "label": "Detection Distance",
+          "hint": "Maximum radar detection distance (0-5 meters)."
+        },
+        "motion_detection_sensitivity": {
+          "label": "Motion Detection Sensitivity",
+          "hint": "Sensitivity of the radar to moving presence (0-10)."
+        },
+        "static_detection_sensitivity": {
+          "label": "Static Detection Sensitivity",
+          "hint": "Sensitivity of the radar to stationary presence (0-10)."
+        },
+        "anti_interference": {
+          "label": "Anti-Interference",
+          "hint": "Reduces false triggers from nearby interference sources."
+        },
+        "indicator": {
+          "label": "LED Indicator",
+          "hint": "Enable the device's LED indicator."
+        },
+        "temperature_calibration": {
+          "label": "Temperature Calibration",
+          "hint": "Offset in °C applied by the sensor (-2.0 to +2.0). Takes effect on next report."
+        },
+        "humidity_calibration": {
+          "label": "Humidity Calibration",
+          "hint": "Offset to adjust humidity readings (-30 to +30)."
+        }
+      }
     }
   }
 }

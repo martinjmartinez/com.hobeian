@@ -47,6 +47,214 @@
   },
   "drivers": [
     {
+      "id": "zg-204zx",
+      "name": {
+        "en": "ZG-204ZX 24GHz Presence Sensor"
+      },
+      "class": "sensor",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "alarm_motion",
+        "measure_luminance",
+        "measure_temperature",
+        "measure_humidity",
+        "measure_battery"
+      ],
+      "capabilitiesOptions": {
+        "alarm_motion": {
+          "title": {
+            "en": "Presence"
+          }
+        },
+        "measure_luminance": {
+          "title": {
+            "en": "Illuminance"
+          }
+        },
+        "measure_temperature": {
+          "title": {
+            "en": "Temperature"
+          }
+        },
+        "measure_humidity": {
+          "title": {
+            "en": "Humidity"
+          }
+        }
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "HOBEIAN",
+          "_TZE200_w0ap83qu"
+        ],
+        "productId": [
+          "ZG-204ZX",
+          "TS0601"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              3,
+              61184
+            ]
+          }
+        }
+      },
+      "energy": {
+        "batteries": [
+          "OTHER"
+        ]
+      },
+      "settings": [
+        {
+          "id": "fading_time",
+          "type": "number",
+          "label": {
+            "en": "Fading Time"
+          },
+          "hint": {
+            "en": "Presence keep time after last detection (0-28800 seconds). Takes effect on next report."
+          },
+          "min": 0,
+          "max": 28800,
+          "value": 30,
+          "units": {
+            "en": "seconds"
+          }
+        },
+        {
+          "id": "illuminance_interval",
+          "type": "number",
+          "label": {
+            "en": "Illuminance Interval"
+          },
+          "hint": {
+            "en": "Light sensing sampling interval, only refreshed while the radar is active (1-720 minutes)."
+          },
+          "min": 1,
+          "max": 720,
+          "value": 1,
+          "units": {
+            "en": "minutes"
+          }
+        },
+        {
+          "id": "detection_distance",
+          "type": "number",
+          "label": {
+            "en": "Detection Distance"
+          },
+          "hint": {
+            "en": "Maximum radar detection distance (0-5 meters)."
+          },
+          "min": 0,
+          "max": 5,
+          "value": 5,
+          "units": {
+            "en": "m"
+          }
+        },
+        {
+          "id": "motion_detection_sensitivity",
+          "type": "number",
+          "label": {
+            "en": "Motion Detection Sensitivity"
+          },
+          "hint": {
+            "en": "Sensitivity of the radar to moving presence (0-10)."
+          },
+          "min": 0,
+          "max": 10,
+          "value": 5
+        },
+        {
+          "id": "static_detection_sensitivity",
+          "type": "number",
+          "label": {
+            "en": "Static Detection Sensitivity"
+          },
+          "hint": {
+            "en": "Sensitivity of the radar to stationary presence (0-10)."
+          },
+          "min": 0,
+          "max": 10,
+          "value": 5
+        },
+        {
+          "id": "anti_interference",
+          "type": "checkbox",
+          "label": {
+            "en": "Anti-Interference"
+          },
+          "hint": {
+            "en": "Reduces false triggers from nearby interference sources."
+          },
+          "value": false
+        },
+        {
+          "id": "indicator",
+          "type": "checkbox",
+          "label": {
+            "en": "LED Indicator"
+          },
+          "hint": {
+            "en": "Enable the device's LED indicator."
+          },
+          "value": true
+        },
+        {
+          "id": "temperature_calibration",
+          "type": "number",
+          "label": {
+            "en": "Temperature Calibration"
+          },
+          "hint": {
+            "en": "Offset in °C applied by the sensor (-2.0 to +2.0). Takes effect on next report."
+          },
+          "min": -2,
+          "max": 2,
+          "value": 0
+        },
+        {
+          "id": "humidity_calibration",
+          "type": "number",
+          "label": {
+            "en": "Humidity Calibration"
+          },
+          "hint": {
+            "en": "Offset to adjust humidity readings (-30 to +30)."
+          },
+          "min": -30,
+          "max": 30,
+          "value": 0
+        }
+      ],
+      "images": {
+        "small": "/drivers/zg-204zx/assets/images/small.png",
+        "large": "/drivers/zg-204zx/assets/images/large.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ]
+    },
+    {
       "id": "zg-222z",
       "name": {
         "en": "ZG-222Z Water Leak Sensor"
