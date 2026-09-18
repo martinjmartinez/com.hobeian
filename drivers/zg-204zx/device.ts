@@ -264,10 +264,11 @@ module.exports = class ZG204ZXDevice extends ZigBeeDevice {
 
     switch (mapping.handler) {
       case 'presence':
-        if (typeof rawValue === 'boolean') {
-          this.log(`Setting presence to ${rawValue}`);
+        if (typeof rawValue === 'boolean' || typeof rawValue === 'number') {
+          const presence = rawValue === true || rawValue === 1;
+          this.log(`Setting presence to ${presence}`);
           if (this.hasCapability('alarm_motion')) {
-            this.setCapabilityValue('alarm_motion', rawValue).catch(this.error);
+            this.setCapabilityValue('alarm_motion', presence).catch(this.error);
           }
         }
         break;
